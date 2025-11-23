@@ -28,7 +28,7 @@ public class Login extends JFrame implements ActionListener {
         iimage.setBounds(630,350,100,100);
         add(iimage);
 
-        label1 = new JLabel("WELCOME TO ATM");
+        label1 = new JLabel("WELCOME TO BANK");
         label1.setForeground(Color.WHITE);
         label1.setFont(new Font("AvantGarde", Font.BOLD, 38));
         label1.setBounds(230,125,450,40);
@@ -128,4 +128,5 @@ public class Login extends JFrame implements ActionListener {
     public static void main(String[] args) {
         new Login();
     }
+
 }
