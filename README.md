@@ -1,4 +1,4 @@
-# Banking Management System (Clear GUVI‑Friendly Documentation)
+# Banking Management System 
 
 A simple and easy **Banking Management System** built in Java with MySQL.
 This guide is written in very simple language so anyone can understand quickly.
@@ -97,36 +97,3 @@ password: your_password
 ## 🎉 Done!
 
 Your banking management system is ready to use.
-
----
-
-## 📘 GUVI Guidelines Compliance
-
-This repository follows GUVI project guidelines by providing:
-
-### ✔ Clear Folder Structure
-
-All folders (Code, SQL, Icons, Jcalendar) are properly organized and easy to understand.
-
-### ✔ Complete README (This File)
-
-This README clearly explains:
-
-* Project overview
-* Prerequisites
-* Installation steps
-* Database import instructions
-* How to run the project
-* Common errors & fixes
-
-### ✔ Simple Setup Instructions
-
-Anyone can set it up by following step‑by‑step guidance.
-
-### ✔ Java + MySQL Integration Explained
-
-Database connectivity requirements and configurations are included.
-
-If GUVI asks for more sections like **Screenshots**, **Demo Video Link**, or **Project Features**, tell me—I'll add them instantly!
-
-If you want an even more simple version or want screenshots, tell me! 😊
