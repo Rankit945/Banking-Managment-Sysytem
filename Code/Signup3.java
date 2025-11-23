@@ -70,12 +70,12 @@ public class Signup3 extends JFrame implements ActionListener {
         buttonGroup.add(r3);
         buttonGroup.add(r4);
 
-        JLabel l4 = new JLabel("Card Number:");
+        JLabel l4 = new JLabel("Acc Number:");
         l4.setFont(new Font("Raleway",Font.BOLD,18));
         l4.setBounds(100,270,200,30);
         add(l4);
 
-        JLabel l5 = new JLabel("(Your 16-digit Card Number)");
+        JLabel l5 = new JLabel("(Your 16-digit Acc Number)");
         l5.setFont(new Font("Raleway",Font.BOLD,12));
         l5.setBounds(100,300,200,20);
         add(l5);
@@ -248,4 +248,5 @@ public class Signup3 extends JFrame implements ActionListener {
     public static void main(String[] args) {
         new Signup3("");
     }
+
 }
