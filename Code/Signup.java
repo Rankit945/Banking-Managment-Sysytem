@@ -17,6 +17,7 @@ public class Signup extends JFrame implements ActionListener {
     Random ran = new Random();
     long first4 =(ran.nextLong() % 9000L) +1000L;
     String first = " " + Math.abs(first4);
+
     Signup(){
         super ("APPLICATION FORM");
 
@@ -31,11 +32,6 @@ public class Signup extends JFrame implements ActionListener {
         label1.setBounds(140,20,600,40);
         label1.setFont(new Font("Raleway",Font.BOLD,38));
         add(label1);
-
-//        JLabel label2 = new JLabel("Page 1");
-//        label2.setFont(new Font("Ralway",Font.BOLD, 22));
-//        label2.setBounds(330,70,600,30);
-//        add(label2);
 
         JLabel label3 = new JLabel("Personal Details");
         label3.setFont(new Font("Raleway", Font.BOLD,22));
@@ -62,17 +58,6 @@ public class Signup extends JFrame implements ActionListener {
         textFname.setBounds(300,210,400,30);
         add(textFname);
 
-        JLabel DOB = new JLabel("Date of Birth :");
-        DOB.setFont(new Font("Raleway", Font.BOLD, 20));
-        DOB.setBounds(100,310,200,30);
-        add(DOB);
-
-        dateChooser = new JDateChooser();
-        dateChooser.setForeground(new Color(105,105,105));
-        dateChooser.setBounds(300,310,400,30);
-        ((JTextField) dateChooser.getDateEditor().getUiComponent()).setEditable(false);
-        add(dateChooser);
-
         JLabel labelG = new JLabel("Gender :");
         labelG.setFont(new Font("Raleway", Font.BOLD, 20));
         labelG.setBounds(100,260,200,30);
@@ -94,6 +79,17 @@ public class Signup extends JFrame implements ActionListener {
         buttonGroup.add(r1);
         buttonGroup.add(r2);
 
+        JLabel DOB = new JLabel("Date of Birth :");
+        DOB.setFont(new Font("Raleway", Font.BOLD, 20));
+        DOB.setBounds(100,310,200,30);
+        add(DOB);
+
+        dateChooser = new JDateChooser();
+        dateChooser.setForeground(new Color(105,105,105));
+        dateChooser.setBounds(300,310,400,30);
+        ((JTextField) dateChooser.getDateEditor().getUiComponent()).setEditable(false);
+        add(dateChooser);
+
         JLabel labelEmail = new JLabel("Email address :");
         labelEmail.setFont(new Font("Raleway", Font.BOLD, 20));
         labelEmail.setBounds(100,360,200,30);
@@ -103,7 +99,6 @@ public class Signup extends JFrame implements ActionListener {
         textEmail.setFont(new Font("Raleway",Font.BOLD, 14));
         textEmail.setBounds(300,360,400,30);
         add(textEmail);
-
 
         JLabel labelMs = new JLabel("Marital Status :");
         labelMs.setFont(new Font("Raleway", Font.BOLD, 20));
@@ -151,6 +146,17 @@ public class Signup extends JFrame implements ActionListener {
         textcity = new JTextField();
         textcity.setFont(new Font("Raleway",Font.BOLD, 14));
         textcity.setBounds(300,510,400,30);
+
+        // ✔ City: Only letters allowed
+        textcity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
+                    e.consume();
+                }
+            }
+        });
+
         add(textcity);
 
         JLabel labelPin = new JLabel("Pin Code :");
@@ -166,11 +172,22 @@ public class Signup extends JFrame implements ActionListener {
         JLabel labelstate = new JLabel("State :");
         labelstate.setFont(new Font("Raleway", Font.BOLD, 20));
         labelstate.setBounds(100,610,200,30);
-        add( labelstate);
+        add(labelstate);
 
         textState = new JTextField();
         textState.setFont(new Font("Raleway",Font.BOLD, 14));
         textState.setBounds(300,610,400,30);
+
+        // ✔ State: Only letters allowed
+        textState.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
+                    e.consume();
+                }
+            }
+        });
+
         add(textState);
 
         next = new JButton("Next");
@@ -189,8 +206,6 @@ public class Signup extends JFrame implements ActionListener {
         back.addActionListener(this);
         add(back);
 
-
-
         getContentPane().setBackground(new Color(222,255,228));
         setLayout(null);
         setSize(850,800);
@@ -206,21 +221,10 @@ public class Signup extends JFrame implements ActionListener {
         String name = textName.getText();
         String fname = textFname.getText();
         String dob = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText();
-        String gender = null;
-        if(r1.isSelected()){
-            gender = "Male";
-        }else if (r2.isSelected()){
-            gender = "Female";
-        }
+
+        String gender = r1.isSelected() ? "Male" : (r2.isSelected() ? "Female" : null);
         String email = textEmail.getText();
-        String marital =null;
-        if (m1.isSelected()){
-            marital = "Married";
-        } else if (m2.isSelected()) {
-            marital = "Unmarried";
-        } else if (m3.isSelected()) {
-            marital = "Other";
-        }
+        String marital = m1.isSelected() ? "Married" : (m2.isSelected() ? "Unmarried" : (m3.isSelected() ? "Other" : null));
 
         String address = textAdd.getText();
         String city = textcity.getText();
@@ -228,24 +232,22 @@ public class Signup extends JFrame implements ActionListener {
         String state = textState.getText();
 
         if (e.getSource() == back) {
-            // close current frame
             this.setVisible(false);
-            // open previous frame (e.g., Login)
             new Login().setVisible(true);
         }
 
         try{
             if (e.getSource() == next) {
-                if (textName.getText().equals("") || textFname.getText().equals("") ||
-                        textEmail.getText().equals("") || textAdd.getText().equals("") ||
-                        textcity.getText().equals("") || textPin.getText().equals("") ||
-                        textState.getText().equals("") || (!r1.isSelected() && !r2.isSelected()) ||
-                        (!m1.isSelected() && !m2.isSelected() && !m3.isSelected()) || dateChooser.getDate() == null) {
+                if (name.equals("") || fname.equals("") || email.equals("") || address.equals("") ||
+                        city.equals("") || pincode.equals("") || state.equals("") ||
+                        gender == null || marital == null || dateChooser.getDate() == null) {
+
                     JOptionPane.showMessageDialog(null, "Fill all the fields");
                 } else {
                     Con c = new Con();
                     String q = "insert into signup values('" + formno + "', '" + name + "','" + fname + "','" + dob + "','" + gender + "','" + email + "','" + marital + "', '" + address + "', '" + city + "','" + pincode + "','" + state + "' )";
                     c.statement.executeUpdate(q);
+
                     new Signup2(formno);
                     setVisible(false);
                 }
