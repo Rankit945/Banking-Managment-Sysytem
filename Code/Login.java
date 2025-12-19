@@ -45,7 +45,7 @@ public class Login extends JFrame implements ActionListener {
         textField2.setFont(new Font("Arial", Font.BOLD,14));
         add(textField2);
 
-        label3 = new JLabel("PIN: ");
+        label3 = new JLabel("MPIN: ");
         label3.setFont(new Font("Ralway", Font.BOLD, 28));
         label3.setForeground(Color.WHITE);
         label3.setBounds(150,250,375,30);
@@ -130,4 +130,5 @@ public class Login extends JFrame implements ActionListener {
     }
 
 }
+
 
